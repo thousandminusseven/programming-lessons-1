@@ -7,4 +7,5 @@ const server = http.createServer ((request, response) => {
   response.end('Hellow World\n');
 });
     
-http.createserver().listen(3000)
+server.listen (port, hostname, () =>{console.log (`servser running at http://${hostname}:${port}/` );
+});
