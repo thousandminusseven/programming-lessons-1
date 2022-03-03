@@ -1,15 +1,16 @@
 const http = require('http')
 const port = 3000;
-const hostname = '127.0.0.1'; 
+const hostname = '192.168.1.159'; 
 
 const server = http.createServer ((request, response) => { 
-  response.statusCode =100;
+  response.statusCode =200;
   response.setHeader('Content-Type', 'text/plain');
   response.end('Hellow World\n');
 });
     
 server.listen (port, hostname, () =>{console.log (`servser running at http://${hostname}:${port}/` );
 });
+
 const requestHandler = (request, response) => {
   response.setHeader("Content-Type", "text/html; charset=utf-8;");
   if(request.url === "/home" || request.url === "/"){
@@ -28,3 +29,4 @@ const requestHandler = (request, response) => {
   };
   http.createServer(requestHandler).listen(3000);
   
+
