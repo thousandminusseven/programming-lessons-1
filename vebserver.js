@@ -40,7 +40,6 @@ let data = fs.readFileSync("new.txt", "utf8");
 console.log(data); 
 });
 
-  
   http.createServer(requestHandler).listen(3000);
   
 
