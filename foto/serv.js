@@ -16,4 +16,11 @@ const requestHandler = (request, response) => {
         let content = fs.readFileSync("1.jpg");
         response.writeHead(200, {
             'Content-Type': 'image/jpeg'
-        });
+        })
+        response.end(content);
+    } else if (request.url == "/image/2") {
+        let content = fs.readFileSync("2.jpg");
+        response.writeHead(200, {
+            'Content-Type': 'image/jpeg'
+        })
+        response.end(content);
