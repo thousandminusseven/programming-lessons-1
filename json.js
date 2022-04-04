@@ -1,58 +1,21 @@
-const Fs = require('fs'); 
+const fs = require('fs');
 const Path = require('path');  
-const Axios = require('axios');
-const http = require("http");
-const fs = require("fs");
-//var express = require('express');
-//const { path } = require('express/lib/application');
-//var app = express();
-async function downloadFile () {  
-  const url = 'https://jsonplaceholder.typicode.com/todos'
-  const path = Path.resolve(__dirname,'test' , 'code.json')
-  const writer = Fs.createWriteStream(path)
-
-  const response = await Axios({
-    url,
-    method: 'GET',
-    responseType: 'stream'
+const axios = require('axios');
+const http = require('http');
 
 
-  })
 
-  response.data.pipe(writer)
+axios.get('https://jsonplaceholder.typicode.com/todos') 
+.then (res=> {
+const json= JSON.stringify(res.data);
+fs.writeFile('code.json',json,(err)=>{
+        if (err) return reject(err);
 
-  return new Promise((resolve, reject) => {
-    writer.on('finish', resolve(path))
-    writer.on('error', reject())  
-  })
-
-}
-
-downloadFile().then(path => {
-    fs.readFile(path, 'utf-8', 
-    function(error, data){
-        if(error) throw error;
-        console.log(data)
-        let result = JSON.parse(data).find(item=> item.id==1 )
-        console.log(typeof(data))
-       
-    });
-    
-})  
-
-//async function loadCollection(url, callback) {
-    //fs.readFile('code.json', 'utf8', function(error ,data) {
-    //if (error) {
-    //console.log(error);
-//} else {
-    //return callback(JSON.parse(data));
-    //}
-//});
-    //}
-
-
-//app.get(/a/, function (req, res) {
-    //res.send('success');
-  //});
-
-//http.createServer(app).listen(3000);
+        console.log('wrote');
+        let arr = JSON.parse(json)
+        console.log(typeof(arr));
+        console.log(arr.id == 2)
+        //console.log(json.search('delectus'))
+    })
+})
+.catch(e => console.error(e));
