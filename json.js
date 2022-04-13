@@ -4,7 +4,6 @@ const axios = require('axios');
 const http = require('http');
 
 
-
 axios.get('https://jsonplaceholder.typicode.com/todos') 
 .then (res=> {
 const json= JSON.stringify(res.data);
@@ -19,3 +18,8 @@ fs.writeFile('code.json',json,(err)=>{
     })
 })
 .catch(e => console.error(e));
+
+var data;
+var arr = JSON.parse("[" + data + "]");
+console.log( arr)
+console.log(typeof arr[0])
