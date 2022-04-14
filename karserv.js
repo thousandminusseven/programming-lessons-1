@@ -2,7 +2,6 @@ const fs = require("fs");
 const http = require("http");
 
 
-
 const requestHandler = (request, response) => {
     response.setHeader("Content-Type", "text/html; charset=utf-8;");
     if (request.url === "/home" || request.url === "/") {
@@ -12,14 +11,11 @@ const requestHandler = (request, response) => {
         response.write("<h2>About</h2>");
 
 
-
     } else if (request.url == "/todos") {
         let content = fs.readFileSync("spisokk del.js");
         response.writeHead(200, {
             'Content-Type': 'package.json'
         })
-
-
 
     }
 };
