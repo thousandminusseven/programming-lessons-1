@@ -1,6 +1,7 @@
 const fs = require('fs')
-const url = '/code/40';
+const url = '/code/100';
 const number = url.split('/').reverse()[0];
+
 
 fs.readFile('code.json',(err,json)=>{
     if (err) return console.error(err);
