@@ -21,6 +21,6 @@ fs.writeFile('code.json',json,(err)=>{
 
 var data;
 var arr = JSON.parse("[" + data + "]");
-console.log( arr)
+console.log(arr)
 console.log(typeof arr[0])
 
