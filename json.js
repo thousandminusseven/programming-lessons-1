@@ -14,7 +14,6 @@ fs.writeFile('code.json',json,(err)=>{
         let arr = JSON.parse(json)
         console.log(typeof(arr));
         console.log(arr.id == 2)
-        //console.log(json.search('delectus'))
     })
 })
 .catch(e => console.error(e));

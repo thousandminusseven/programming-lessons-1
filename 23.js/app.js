@@ -1,12 +1,6 @@
 const express = require('express');
 const app = express();
 app.set('port', process.env.PORT || 3000);
-// пользовательская страница 404
-app.use(function (req, res) {
-    res.type('text/plain');
-    res.status(404);
-    res.send('404 — Не найдено');
-});
 // пользовательская страница 500
 app.use(function (err, req, res, next) {
     console.error(err.stack);
@@ -20,17 +14,11 @@ app.listen(app.get('port'), function () {
 });
 app.get('/', function (req, res) {
     res.type('text/plain');
-    res.send('Главная страница');
+    res.send('Главная страница - получение информациии');
 });
 app.get('/about', function (req, res) {
     res.type('text/plain');
     res.send('О главной странице');
-});
-// пользовательская страница 404
-app.use(function (req, res, next) {
-    res.type('text/plain');
-    res.status(404);
-    res.send('404 — Не найдено');
 });
 app.get('/about*', function (req, res) {
     // отправляем контент...
